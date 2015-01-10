@@ -38,6 +38,12 @@
                 <li>
                     À propos
                 </li>
+                <li>
+                    Contactez-nous
+                </li>
+                <li>
+                    Connexion
+                </li>
             </ul>
         </div>
     </body>
