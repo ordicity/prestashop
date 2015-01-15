@@ -1,21 +1,11 @@
 <?php
 
-function text(){
-    echo'coucou';
-}
+session_start();
 
-function affichageFormation($id){
-    include("../connection.php");
-    $sql="SELECT pfvl.value
-FROM `ps_feature_value_lang` pfvl 
-INNER JOIN ps_feature_product pfp ON pfvl.`id_feature_value`=pfp.`id_feature_value` 
-INNER JOIN ps_product_lang ppl ON pfp.id_product=ppl.id_product 
-INNER JOIN ps_feature_lang pfl ON pfp.id_feature=pfl.id_feature 
-WHERE ppl.name='java' AND pfl.name='".$id."'"; 
-    $r = mysql_query($sql, $link);
-    $t=mysql_fetch_array($r);
-    echo $t[0];
-}
+$page = $_GET['page'];
+$o = $_SESSION['o'];
+
+include("../connection.php");
 ?>
 
 <html>
@@ -35,16 +25,40 @@ WHERE ppl.name='java' AND pfl.name='".$id."'";
         #blockaffichageformation li button{
             padding: 10px;
         }
+        ul{
+            list-style-type: none;
+        }
+        a{
+            text-decoration: none;
+            padding-left: 10px;
+        }
 
     </style>
 
     <div id="blockaffichageformation">
         <ul id="formationContainer">
-            <li id="objectifs"><button onclick="affichageFormation('objectifs')">objectifs</button></li>
-            <li id="programme"><button onclick="affichageFormation('programme')">programme</button></li>
-            <li id="public"><button onclick="affichageFormation('public')">dédié à qui ?</button></li>
-            <li id="dates"><button onclick="affichageFormation('dates')">dates</button></li>
-            <li id="lieux"><button onclick="test()">lieux</button></li>
+            <li><a href='?page=objectifs'>objectifs</a></li>
+            <li><a href='?page=programme'>programme</a></li>
+            <li><a href='?page=public'>dédié à qui ?</a></li>
+            <li><a href='?page=date'>dates</a></li>
+            <li><a href='?page=lieu'>lieux</a></li>
         </ul>
     </div>
+    
+    <?php 
+        if($page=="objectifs") {
+            if($o==""){
+                $sql="SELECT pfvl.value
+                    FROM `ps_feature_value_lang` pfvl 
+                    INNER JOIN ps_feature_product pfp ON pfvl.`id_feature_value`=pfp.`id_feature_value` 
+                    INNER JOIN ps_product_lang ppl ON pfp.id_product=ppl.id_product 
+                    INNER JOIN ps_feature_lang pfl ON pfp.id_feature=pfl.id_feature 
+                    WHERE ppl.name='java' AND pfl.name='objectifs'"; 
+                    $r = mysql_query($sql, $link);
+                    $o=mysql_fetch_array($r);
+                    $_SESSION['o'] = $o;
+            }
+            echo $o[0];
+        } 
+    ?>
 </html>
