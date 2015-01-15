@@ -5,8 +5,9 @@
 
     <style type="text/css">
         #accueilListFormation{
-            position:relative;
-            right:5px;
+            float:right;
+            background-color:black;
+            color:white;
         }
     </style>
 

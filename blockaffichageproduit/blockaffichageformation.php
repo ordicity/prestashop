@@ -1,9 +1,9 @@
 <?php
 
-class blockformationaccueil extends Module {
+class blockaffichageformation extends Module {
 
     public function __construct() {
-        $this->name = 'blockformationaccueil';
+        $this->name = 'blockaffichageformation';
         $this->tab = 'Test';
         $this->version = 1.0;
         $this->author = 'Firstname Lastname';
@@ -11,8 +11,8 @@ class blockformationaccueil extends Module {
 
         parent::__construct();
 
-        $this->displayName = $this->l('blockformationaccueil');
-        $this->description = $this->l('module permetant l\'affichage de la liste des fomations dans l\'accueil.');
+        $this->displayName = $this->l('blockaffichageformation');
+        $this->description = $this->l('module permetant l\'affichage d\'une formation.');
     }
 
     public function install() {
@@ -23,7 +23,7 @@ class blockformationaccueil extends Module {
 
     public function hookDisplayRight($params) {
         global $smarty;
-        return $this->display(__FILE__, 'blockformationaccueil.tpl');
+        return $this->display(__FILE__, 'blockaffichageformation.tpl');
     }
 
 }
