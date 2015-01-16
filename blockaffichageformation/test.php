@@ -2,16 +2,18 @@
 <html>
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" >
-        <SCRIPT language="Javascript">
-
-            function affichageObjectifs() {
-                alert($('#formationContainer li[#objectifs]').attr('class','nul'));
-            }
-            function affichageProgramme() {
-                alert('Texte2');
-            }
-
-        </SCRIPT>
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $(".coucou").on("click",function(){
+                    var choix = $(this);
+                    alert("choix : " + choix.attr("id"));
+                    //var replace = "<li class='coucou selected' id="+choix.attr('id')";
+                    /*alert("replace : " + replace);
+                    choix.replaceWith(replace);*/
+                });
+            });
+        </script>
     </head>
 
     <style type="text/css">
@@ -61,11 +63,11 @@
 
     <div id="blockaffichageformation">
         <ul id="formationContainer">
-            <li class="selected" id="objectifs"><a href='#objectifs' onClick="affichageObjectifs();">objectifs</a></li>
-            <li class=""><a href='#programme' id="programme" onClick="affichageProgramme();">programme</a></li>
-            <li class=""><a href='#public' id="public">pour qui ?</a></li>
-            <li class=""><a href='#date' id="dates">dates</a></li>
-            <li class=""><a href='#lieu' id="lieux">lieux</a></li>
+            <li class="coucou" id="objectifs"><a href='?#objectifs'>objectifs</a></li>
+            <li class="coucou" id="programme"><a href='?#programme'>programme</a></li>
+            <li class="coucou" id="public"><a href='?#public'>pour qui ?</a></li>
+            <li class="coucou" id="dates"><a href='?#date'>dates</a></li>
+            <li class="coucou" id="lieux"><a href='?#lieu'>lieux</a></li>
         </ul>
     </div>
 
