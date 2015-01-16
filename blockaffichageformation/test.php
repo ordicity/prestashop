@@ -4,13 +4,16 @@
         <meta http-equiv="content-type" content="text/html; charset=utf-8" >
         <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script>
-            $(document).ready(function() {
-                $(".coucou").on("click",function(){
+            $(document).ready(function () {
+                $(".formationClass").on("click", function () {
                     var choix = $(this);
-                    alert("choix : " + choix.attr("id"));
-                    //var replace = "<li class='coucou selected' id="+choix.attr('id')";
-                    /*alert("replace : " + replace);
-                    choix.replaceWith(replace);*/
+                    for (var i = 0; i < $(".formationClass").length; i++)
+                    {
+                        $($(".formationClass").get(i)).removeClass('selected');
+                        $($(".infoFormation").get(i)).css('display','none');
+                    }
+                    $(choix).addClass('selected');
+                    $("#affichage"+choix.attr('id')).css('display','block');
                 });
             });
         </script>
@@ -63,33 +66,33 @@
 
     <div id="blockaffichageformation">
         <ul id="formationContainer">
-            <li class="coucou" id="objectifs"><a href='?#objectifs'>objectifs</a></li>
-            <li class="coucou" id="programme"><a href='?#programme'>programme</a></li>
-            <li class="coucou" id="public"><a href='?#public'>pour qui ?</a></li>
-            <li class="coucou" id="dates"><a href='?#date'>dates</a></li>
-            <li class="coucou" id="lieux"><a href='?#lieu'>lieux</a></li>
+            <li class="formationClass" id="objectifs"><a href='?#objectifs'>objectifs</a></li>
+            <li class="formationClass" id="programme"><a href='?#programme'>programme</a></li>
+            <li class="formationClass" id="public"><a href='?#public'>pour qui ?</a></li>
+            <li class="formationClass" id="dates"><a href='?#date'>dates</a></li>
+            <li class="formationClass" id="lieux"><a href='?#lieu'>lieux</a></li>
         </ul>
     </div>
 
     <br>
 
-    <div class="infoFormation" id="affichageObjectifs" style="display:block;"> 
+    <div class="infoFormation" id="affichageobjectifs" style="display:block;"> 
         objectifs
     </div>
 
-    <div class="infoFormation" id="affichageProgramme" style="display:none;"> 
+    <div class="infoFormation" id="affichageprogramme" style="display:none;"> 
         programme
     </div>
 
-    <div class="infoFormation" id="affichagePublic" style="display:none;"> 
+    <div class="infoFormation" id="affichagepublic" style="display:none;"> 
         pour qui ?
     </div>
 
-    <div class="infoFormation" id="affichageDates" style="display:none;">
+    <div class="infoFormation" id="affichagedates" style="display:none;">
         dates
     </div>
 
-    <div class="infoFormation" id="affichageLieux" style="display:none;">
+    <div class="infoFormation" id="affichagelieux" style="display:none;">
         lieux
     </div>
 
